@@ -1,4 +1,13 @@
-# Changeset Migration
+---
+title: Changeset Migration
+layout: page
+template: default
+pageType: index
+toc: true
+pageStatus: published
+discussionId: 
+redirect_from: /changeset-migration.html
+---
 
 Azure DevOps Migration Tools enable migrating work item changesets with cross project links from tfvc or git.
 

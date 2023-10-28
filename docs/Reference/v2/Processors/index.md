@@ -1,17 +1,13 @@
-## Processors
-
->**_This documentation is for a preview version of the Azure DevOps Migration Tools._ If you are not using the preview version then please head over to the main [documentation](https://nkdagility.github.io/azure-devops-migration-tools).**
-
-[Overview](.././index.md) > [Reference](../index.md) > *Processors*
+---
+title: Processors
+layout: page
+pageType: index
+toc: true
+pageStatus: published
+discussionId: 
+---
 
 We provide a number of Processors that can be used to migrate diferent sorts of data.
-
-| Processor                                                         | Data Type      | Description                                                              |
-| :---------------------------------------------------------------- | :------------- | :----------------------------------------------------------------------- |
-| [WorkItemTrackingProcessor](./WorkItemTrackingProcessor.md)       | Work Items     | Migrated any number of work items, their revisions, links, & attachments |
-| [TfsTeamSettingsProcessor](./TfsTeamSettingsProcessor.md)         | Teams          | Migrate Teams and Team Settings to a new environment                     |
-| [TfsSharedQueryProcessor](./TfsSharedQueryProcessor.md)           | Shared Queries | Migrates all of the Shared Queries from one Project to Another.          |
-| [AzureDevOpsPipelineProcessor](./AzureDevOpsPipelineProcessor.md) | Pipelines      | Migrates Taskgroups, Build and Release Pipelines.                        |
 
 | Processors | Status | Target    | Usage                              |
 |------------------------|---------|---------|------------------------------------------|

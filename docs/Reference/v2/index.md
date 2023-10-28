@@ -1,9 +1,12 @@
-## V2 Reference Overview
+---
+title: v2 Reference Overview
+layout: page
+pageType: index
+toc: true
+pageStatus: published
+discussionId: 
+---
 
->**_This documentation is for a preview version of the Azure DevOps Migration Tools._ If you are not using the preview version then please head over to the main [documentation](https://nkdagility.github.io/azure-devops-migration-tools).**
-
-
-[Overview](.././index.md) > **Reference**
 
 The system works by setting one or more [Processors](../v2/Processors/index.md) in the json 
 configuration file. This processor can have many [ProcessorEnrichers](../v2/ProcessorEnrichers/index.md) that 
@@ -28,86 +31,10 @@ The model should also work for other data `Teams`, `SharedQueries`, `PlansAndSui
 
 This config is for reference only. It has things configured that you will not need, and that may conflict with each other.
 
-```
-{
-  "ChangeSetMappingFile": null,
-  "Source": null,
-  "Target": null,
-  "FieldMaps": [],
-  "GitRepoMapping": null,
-  "LogLevel": "Information",
-  "CommonEnrichersConfig": null,
-  "Processors": [
-    {
-      "$type": "WorkItemTrackingProcessorOptions",
-      "Enabled": true,
-      "ReplayRevisions": true,
-      "PrefixProjectToNodes": false,
-      "CollapseRevisions": false,
-      "WorkItemCreateRetryLimit": 5,
-      "ProcessorEnrichers": [
-        {
-          "$type": "PauseAfterEachItemOptions",
-          "Enabled": true
-        },
-        {
-          "$type": "AppendMigrationToolSignatureFooterOptions",
-          "Enabled": true
-        },
-        {
-          "$type": "FilterWorkItemsThatAlreadyExistInTargetOptions",
-          "Enabled": true,
-          "Query": {
-            "Query": "SELECT [System.Id], [System.Tags] FROM WorkItems WHERE [System.TeamProject] = @TeamProject AND [System.WorkItemType] NOT IN ('Test Suite', 'Test Plan') ORDER BY [System.ChangedDate] desc",
-            "Parameters": null
-          }
-        },
-        {
-          "$type": "SkipToFinalRevisedWorkItemTypeOptions",
-          "Enabled": true
-        },
-        {
-          "$type": "TfsValidateRequiredFieldOptions",
-          "Enabled": true
-        },
-        {
-          "$type": "TfsNodeStructureOptions",
-          "Enabled": true,
-          "PrefixProjectToNodes": false,
-          "NodeBasePaths": null,
-          "AreaMaps": {},
-          "IterationMaps": {}
-        },
-        {
-          "$type": "TfsRevisionManagerOptions",
-          "Enabled": true,
-          "ReplayRevisions": false,
-          "MaxRevisions": 0
-        }
-      ],
-      "SourceName": "Source",
-      "TargetName": "Target"
-    }
-  ],
-  "Version": "0.0",
-  "workaroundForQuerySOAPBugEnabled": false,
-  "WorkItemTypeDefinition": {
-    "sourceWorkItemTypeName": "targetWorkItemTypeName"
-  },
-  "Endpoints": {
-    "InMemoryWorkItemEndpoints": [
-      {
-        "Name": "Source",
-        "EndpointEnrichers": null
-      },
-      {
-        "Name": "Target",
-        "EndpointEnrichers": null
-      }
-    ]
-  }
-}
-```
+{% highlight JSON %}
+{% include sampleConfig/configuration-Fullv2.json %}
+{% endhighlight %}
+
 
 ### What was added here
 

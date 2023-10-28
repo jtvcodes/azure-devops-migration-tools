@@ -1,19 +1,15 @@
-## Endpoint Enrichers
-
->**_This documentation is for a preview version of the Azure DevOps Migration Tools._ If you are not using the preview version then please head over to the main [documentation](https://nkdagility.github.io/azure-devops-migration-tools).**
-
-
-[Overview](.././index.md) > [Reference](../index.md) > [Endpoints](../Endpoints/index.md) > *Endpoint Enrichers*
+---
+title: Endpoint Enrichers
+layout: page
+pageType: index
+toc: true
+pageStatus: published
+discussionId: 
+---
 
 Endpoint Enrichers are run within the context of the Endpoint that they are configured for. Many endpoints are flexible, however there are also enrichers that only work with certain Endpoints.
 
-| Endpoint Enricher          | Data Target | Description |
-| -------------------------- | ----------- | ----------- |
-| WorkItemAttachmentEnricher | Attachments | TBA         |
-| WorkItemLinkEnricher       | Links       | TBA         |
-| WorkItemCreatedEnricher    | CreatedDate | TBA         |
-| WorkItemEmbedEnricher      | HTML Fields | TBA         |
-| WorkItemFieldTableEnricher | History     | TBA         |
+{% include content-collection-table.html collection = "reference" typeName = "EndpointEnrichers" architecture = "v2" %}
 
 
 ### Endpoint Enricher Options

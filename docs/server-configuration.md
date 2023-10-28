@@ -1,4 +1,13 @@
-# Server Configuration and Requirements
+---
+title: Server Configuration and Requirements
+layout: page
+pageType: index
+template: default
+toc: true
+pageStatus: production
+discussionId: 
+redirect_from: /server-configuration.html
+---
 
 There are some requirements that you will need to meet in order to use the tool against your TFS or VSTS server. The Azure DevOps Migration Tools use a flag to Bypass the Work Item rules engine and write data into TFS\VSTS that may not comply with the rules. For example you can write data directly into the `Closed` state without starting at `New`. This is very useful for migrations but requires some pre-requisites.
 

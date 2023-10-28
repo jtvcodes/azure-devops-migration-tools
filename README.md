@@ -1,20 +1,22 @@
-# Azure DevOps Migration Tools [![Chocolatey](https://img.shields.io/chocolatey/dt/vsts-sync-migrator.svg)](https://chocolatey.org/packages/vsts-sync-migrator/) [![GitHub release](https://img.shields.io/github/release/nkdAgility/vsts-sync-migration.svg)](https://github.com/nkdAgility/azure-devops-migration-tools/releases) ![Build on VSTS](https://nkdagility.visualstudio.com/_apis/public/build/definitions/1b52ce63-eccc-41c8-88f9-ae6ebeefdc63/94/badge) 
+# Azure DevOps Migration Tools [![GitHub release](https://img.shields.io/github/release/nkdAgility/vsts-sync-migration.svg)](https://github.com/nkdAgility/azure-devops-migration-tools/releases) ![Build on VSTS](https://nkdagility.visualstudio.com/_apis/public/build/definitions/1b52ce63-eccc-41c8-88f9-ae6ebeefdc63/94/badge) 
 
-The Azure DevOps Migration Tools allow you to bulk edit and migrate data between Team Projects on both Microsoft Team Foundation Server (TFS) and Azure DevOps Services. Take a look at the  [documentation](http://nkdagility.github.io/azure-devops-migration-tools/) to find out how. This project is published as [code on GitHub](https://github.com/nkdAgility/azure-devops-migration-tools/) as well as a [Azure DevOps Migration Tools on Chocolatey](https://chocolatey.org/packages/vsts-sync-migrator/).
-
+The Azure DevOps Migration Tools allow you to bulk edit and migrate data between Team Projects on both Microsoft Team Foundation Server (TFS) and Azure DevOps Services. Take a look at the  [documentation](https://nkdagility.com/docs/azure-devops-migration-tools/) to find out how. This project is published as [code on GitHub](https://github.com/nkdAgility/azure-devops-migration-tools/) as well as a Winget package a `nkdAgility.AzureDevOpsMigrationTools`.
 
 **Ask Questions on Github: https://github.com/nkdAgility/azure-devops-migration-tools/discussions**
 
-## Some Data from the last 30 days (as of 01/04/2022)
+## Some Data from the last 30 days (as of 06/04/2023)
 
 | Catagory  | Metric | Notes |
 | ------------- | ------------- | ------------- |
 | Work Item Revisions | **14m** | A single Work Item may have many revisions that we need to migrate |
 | Average Work item Migration Time  | **35s** | Work Item (inlcudes all revisions, links, and attachements for the work item) |
+| RelatedLinkCount | **5m** | Each work item may have many links or none. |
 | Git Commit Links  | **480k** |  |
 | Attachments | **252.37k**  | Total number of attachments migrated |
-| Migration Run Ave  | **14 minutes** | Includes dryruns as well.  |
-| Migration Run Total   |  **19bn Seconds** |  |
+| Test Suits | 52k | total suits migrated | 
+| Test Cases Mapped | **800k** | Total test cases mapped into Suits |
+| Migration Run Ave  | **14 minutes** | Includes dry-runs as well.  |
+| Migration Run Total   |  **19bn Seconds** | Thats **316m hours** or **13m days** of run time in the last 30 days. |
 
 
 ## What can you do with this tool?
@@ -24,7 +26,7 @@ The Azure DevOps Migration Tools allow you to bulk edit and migrate data between
 - Bulk edit of `Work Items` accross an entire `Project`.
 
 **WARNING: This tool is not designed for a novice. This tool was developed to support the scenarios below, and the edge cases that have been encountered by the 30+ contributors from around the Azure DevOps community. You should be comfortable with the TFS/Azure DevOps object model, as well as debugging code in Visual Studio.**
-**Community support is available through [GitHub](https://github.com/nkdAgility/azure-devops-migration-tools/discussions) ; Paid support is available through our [recommended consultants](http://nkdagility.github.io/azure-devops-migration-tools/#support) as well as our contributors and many DevOps consultants around the world.**
+**Community support is available through [GitHub](https://github.com/nkdAgility/azure-devops-migration-tools/discussions) ; Paid support is available through our [recommended consultants](https://nkdagility.com/docs/azure-devops-migration-tools/#support) as well as our contributors and many DevOps consultants around the world.**
 
 ### What versions of Azure DevOps & TFS do you support?
 
@@ -48,10 +50,17 @@ The Azure DevOps Migration Tools allow you to bulk edit and migrate data between
 ## Quick Links
 
  - [Video Overview](https://www.youtube.com/watch?v=RCJsST0xBCE)
- - [Getting Started](http://nkdagility.github.io/azure-devops-migration-tools/getting-started)
- - [Documentation](http://nkdagility.github.io/azure-devops-migration-tools/)
+ - [Getting Started](https://nkdagility.com/learn/azure-devops-migration-tools/getting-started.html)
+ - [Documentation](https://nkdagility.com/learn/azure-devops-migration-tools/)
  - [Questions on Usage](https://github.com/nkdAgility/azure-devops-migration-tools/discussions)
- - [Bugs and New Features](https://github.com/nkdAgility/azure-devops-migration-tools)
+
+## Installing an running the tools
+
+We use [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/) to host the tools, and you can use the command `winget install nkdAgility.AzureDevOpsMigrationTools` to install them on Windows 10 and Windows 11. For other operating systems you can download the [latest release](https://github.com/nkdAgility/azure-devops-migration-tools/releases/latest) and unzip it to a folder of your choice.
+
+The tools will be installed to `%Localappdata%\Microsoft\WinGet\Packages\nkdAgility.AzureDevOpsMigrationTools_Microsoft.Winget.Source_XXXXXXXXXX` and a symbolic link to `devopsmigration.exe` that lets you run it from anywhere using `devopsmigration init`.
+
+For a more detailed getting started guide please see the [documentation](https://nkdagility.com/docs/azure-devops-migration-tools/getting-started.html).
 
 ## Support
 
@@ -70,6 +79,10 @@ We use these tools with our customers, and for fun, to do real world migrations 
 
 ## Change Log
 
+- 14.0 - Move from Chocolaty to Winget as the base installer. We will continue to publish to Chocolaty, but we recommend using `winget install nkdAgility.AzureDevOpsMigrationTools` for future installs. Main executable renamed to "devopsmigration.exe" to prevent conflict with other applications with symbolic links.
+- 13.2 - Added [ExportUsersForMapping](https://nkdagility.com/learn/azure-devops-migration-tools/Reference/v1/Processors/TeamMigrationContext/) to export a json file with a list of users ready for a field mapping.
+- 13.1 - Update all NuGet packages to latest version.
+- 13.0 - Update to .net 7.0 with all dependancies. Focus on documentation improvements to support future updates.
 - 12.1 - Make embedded images regex lazy
 - 12.1 - Added a stop when there are area or iteration nodes in the source history that are not in the target. This causes missing of data. System will now list the areas and iteration that are missing, and then stop. You can decide to add them manually, or add a field mapping.
 - v11.11 - Refactored revision manager to have more tests and support limiting the number of revisions. CollapseRevisions has been replaced by setting MaxRevisions to 1 and setting AttachRevisionHistory to true; MaxRevisions sets the maximum number of revisions that will be migrated. "First + Last*N = Max". If this was set to 5 and there were 10 revisions you would get the first 1 (creation) and the latest 4 migrated. This is done after all of the existing revisions are created but before anything newer that target is removed.
@@ -102,4 +115,3 @@ We use these tools with our customers, and for fun, to do real world migrations 
 | Security Rating | [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=vsts-sync-migrator%3Amaster&metric=security_rating)](https://sonarcloud.io/dashboard?id=vsts-sync-migrator%3Amaster) |
 | Vulnerabilities | [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=vsts-sync-migrator%3Amaster&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=vsts-sync-migrator%3Amaster) |
 | Release | [![GitHub release](https://img.shields.io/github/release/nkdAgility/vsts-sync-migration.svg)](https://github.com/nkdAgility/azure-devops-migration-tools/releases) |
-| Chocolatey |[![Chocolatey](https://img.shields.io/chocolatey/v/vsts-sync-migrator.svg)](https://chocolatey.org/packages/vsts-sync-migrator/)|
